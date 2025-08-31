@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}BlogStack{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #f1f3f2;
+        }
+
+        main {
+            flex: 1; 
+        }
+
+        
+        .site-bar {
+            background-color: #2d6a4f; 
+            color: #1c1c1c;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        
+        a {
+            color: #1c1c1c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #ffb703;
+        }
+
+        
+        .site-bar a {
+            color: #1c1c1c;
+        }
+        .site-bar a:hover {
+            color: #ffb703 !important;
+        }
+
+        footer {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+    
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        
+        .post-card {
+            cursor: pointer;
+        }
+
+    
+        .modal-body p,
+        .full-post-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.6;
+        }
+
+        .btn-success.glow {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+         .btn-success.glow::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border-radius: 8px;
+            background: rgba(45, 106, 79, 0.5);
+            filter: blur(8px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-success.glow:hover::after {
+            opacity: 1;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+         0% {
+             transform: scale(1);
+            opacity: 0.6;
+         }
+         50% {
+           transform: scale(1.1);
+           opacity: 0.3;
+        }
+        100% {
+           transform: scale(1);
+           opacity: 0.6;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark site-bar mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">BlogStacks</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                   <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                   </li>
+                   <li class="nav-item">
+                         <a class="nav-link" href="{% url 'post_list' %}">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_create' %}">Create Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="container mb-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-bar">
+        &copy; 2025 BlogStack. All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

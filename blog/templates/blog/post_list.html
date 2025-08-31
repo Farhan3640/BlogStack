@@ -1,0 +1,80 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Blog Posts{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-center">Blog Posts</h1>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for post in posts %}
+  <div class="col">
+    <div class="card shadow-sm post-card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+
+      
+        <p class="card-text truncated-text">{{ post.content }}</p>
+        
+        {% if post.content|length > 200 %}
+        <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#postModal{{ post.pk }}">
+          Read More
+        </a>
+        {% endif %}
+
+        <div class="mt-2">
+          <a href="{% url 'post_update' post.pk %}" class="btn btn-sm btn-warning">Edit</a>
+          <a href="{% url 'post_delete' post.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="postModal{{ post.pk }}" tabindex="-1" aria-labelledby="postModalLabel{{ post.pk }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postModalLabel{{ post.pk }}">{{ post.title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="full-post-text">{{ post.content }}</p>
+        </div>
+        <div class="modal-footer">
+          <a href="{% url 'post_update' post.pk %}" class="btn btn-warning">Edit</a>
+          <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-center">No Blogs yet.</p>
+  {% endfor %}
+</div>
+
+<style>
+.truncated-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+}
+.full-post-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+.post-card {
+    transition: transform 0.2s ease;
+    border-radius: 10px;
+}
+.post-card:hover {
+    transform: scale(1.02);
+}
+</style>
+{% endblock %}

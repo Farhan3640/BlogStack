@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Home | BlogStack{% endblock %}
+
+{% block content %}
+<div class="text-center my-5">
+    <h1 class="display-4">Welcome to BlogStack</h1>
+    <p class="lead">A space to share knowledge, ideas, and stories that matter.</p>
+    <a href="{% url 'post_list' %}" class="btn btn-success btn-lg mt-3 glow">Read Blogs</a>
+
+</div>
+
+<hr class="my-5">
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <h3>📚 Knowledge</h3>
+        <p>Explore articles that inspire learning and growth.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>✍️ Creativity</h3>
+        <p>Discover stories, poems, and creative writings.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>🌍 Lifestyle</h3>
+        <p>Read about travel, productivity, and everyday life tips.</p>
+    </div>
+</div>
+
+<hr class="my-5">
+
+<div class="text-center">
+    <h2>About BlogStack</h2>
+    <p class="mx-auto" style="max-width: 700px;">
+        This blog is a collection of thoughts, ideas, and stories shared with the world. 
+        Whether you’re here to learn, get inspired, or simply read something new, 
+        there’s always something waiting for you.
+    </p>
+</div>
+{% endblock %}
