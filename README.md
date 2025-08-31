@@ -47,10 +47,12 @@ DEBUG=True
 6. Apply migrations:
 python manage.py makemigrations
 python manage.py migrate
+
+7. Run the development server:
+python manage.py runserver
 ```
 
 # License
 This project is for educational purposes.
 
-7. Run the development server
-python manage.py runserver
+
