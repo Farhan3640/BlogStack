@@ -13,10 +13,12 @@ A simple Django blog project with MySQL integration.
 - Responsive design with Bootstrap
 
 # Prerequisites
+```
 Python 3.10+
 MySQL installed and running
 pip (Python package manager)
 Virtual environment recommended
+```
 
 # Setup Instructions
 ```bash
