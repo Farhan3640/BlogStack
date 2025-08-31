@@ -1,6 +1,7 @@
 # BlogStack
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square)
 ![Django](https://img.shields.io/badge/Django-5.2.5-green?style=flat-square)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-Educational-orange?style=flat-square)
 
 A simple Django blog project with MySQL integration.
